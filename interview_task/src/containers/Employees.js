@@ -9,7 +9,7 @@ import Pager from 'react-pager';
 class Employees extends Component {
     constructor(props){
         super(props)
-        this.state = {currentPage: 0, pageSize: 5, searchValue: ''}
+        this.state = {currentPage: 0, pageSize: 5, searchValue: '', orderColumnName: 'FirstName', orderType: 0}
         this.search = this.search.bind(this)
         this.changePage = this.changePage.bind(this)
         this.getOrderedData = this.getOrderedData.bind(this)
