@@ -15,7 +15,9 @@ namespace WebApiEmployees.Controllers
     // GET: api/Employees
     public EmployeeDtoPage GetEmployees(int pageSize, int pageNumber, string searchValue, string orderColumnName, OrderType orderType)
     {
-      EmployeesDataWorker employeesDataWorker = new EmployeesDataWorker(db.Employees);
+      EmployeesDataWorker employeesDataWorker = new EmployeesDataWorker();
+
+      employeesDataWorker.InitializeDto(db.Employees);
 
       if (!String.IsNullOrEmpty(searchValue))
       {
@@ -23,8 +25,6 @@ namespace WebApiEmployees.Controllers
       }
 
       int totalCount = employeesDataWorker.GetCountOfEmployees();
-
-      employeesDataWorker.FormatDto();
 
       employeesDataWorker.OrderData(orderColumnName, orderType);
 
